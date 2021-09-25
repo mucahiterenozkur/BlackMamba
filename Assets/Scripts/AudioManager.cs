@@ -6,6 +6,12 @@ public class AudioManager : MonoBehaviour
 {
     private void Awake()
     {
+//        //Set screen size for Standalone
+//#if UNITY_STANDALONE
+//        Screen.SetResolution(564, 960, true);
+//        Screen.fullScreen = true;
+//#endif
+
         int numberOfAudioManagers = FindObjectsOfType<AudioManager>().Length;
         if (numberOfAudioManagers > 1)
         {

@@ -31,7 +31,6 @@ public class Snake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         canvas.SetActive(false);
         isGameOver = false;
         gameOverText.enabled = false;
