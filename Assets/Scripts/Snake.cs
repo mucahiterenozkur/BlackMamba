@@ -10,24 +10,29 @@ public class Snake : MonoBehaviour
 
     public GameObject tailPrefab;
     public GameObject food;
-
-    private Vector2 areaLimit = new Vector2(13,24);
-
-    public float speed = 1;
-    private int score;
-    private Vector2 direction = Vector2.down;
-    private List<Transform> snake = new List<Transform>();
-
+    public GameObject canvas;
     public TextMeshPro scoreText;
     public TextMeshPro gameOverText;
+    public bool isGameOver;
 
+    public float speed = 1;
+    
+
+    private Vector2 areaLimit = new Vector2(13,24);
+    private Vector2 direction = Vector2.down;
+    private int score;
     private bool grow;
-    private bool isGameOver;
+    
 
 
+    private List<Transform> snake = new List<Transform>();
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        
+        canvas.SetActive(false);
         isGameOver = false;
         gameOverText.enabled = false;
         scoreText.text = "0";
@@ -35,18 +40,13 @@ public class Snake : MonoBehaviour
         MakeFoodInRandomPosition();
         StartCoroutine(Move());
         snake.Add(transform);
-        
-        
 
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         var rotationVector = gameObject.transform.rotation.eulerAngles;
-        //rotationVector.z = 0;
-        //transform.rotation = Quaternion.Euler(rotationVector);
 
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && (direction != Vector2.right)){
             direction = Vector2.left;
@@ -114,8 +114,6 @@ public class Snake : MonoBehaviour
             position.y = Mathf.RoundToInt(position.y);
             transform.position = position;
 
-            
-
             yield return new WaitForSeconds(speed);
         }
     }
@@ -124,7 +122,6 @@ public class Snake : MonoBehaviour
     {
         if (other.CompareTag("Food"))
         {
-            //Grow();
             grow = true;
         }
 
@@ -157,9 +154,6 @@ public class Snake : MonoBehaviour
 
         } while (!CanSpawnFoodInPosition(newFoodPosition));
 
-        //var x = (int) Random.Range(1, areaLimit.x);
-        //var y = (int) Random.Range(1, areaLimit.y);
-
         food.transform.position = newFoodPosition;
         Debug.Log("x:" + food.transform.position.x + "y: " + food.transform.position.y);
     }
@@ -181,8 +175,9 @@ public class Snake : MonoBehaviour
 
     private void GameOver()
     {
-        gameOverText.enabled = true;
+        canvas.SetActive(true);
         isGameOver = true;
+        gameOverText.enabled = true;
         Debug.Log("DEAD");
         StopAllCoroutines();
     }
