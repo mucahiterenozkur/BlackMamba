@@ -3,6 +3,7 @@ Black Mamba is a modern snake game. It's made with Unity. Animations, sound effe
 I made this game for the memory of <strong>Kobe Bryant</strong>. He is one of my life idols. Black mamba was his on field name and his mentality. So, I had to to use it in this project if I was going to be interested with a game like this. <br><br>
 
 
+
 <strong>Gameplay</strong> <br><br>
 ![ezgif-3-01fdec0da5b8](https://user-images.githubusercontent.com/59232592/134780353-e5b5a4d0-f533-4332-8f6e-85e9d48dc765.gif) <br><br>
 <strong>Screenshots</strong> <br><br>
